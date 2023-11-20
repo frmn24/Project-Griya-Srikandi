@@ -30,22 +30,18 @@ $user_fullname = $_SESSION['user_fullname'];
         <!-- Navbar Brand-->
         <a class="navbar-brand ps-3">Admin</a>
         <!-- Sidebar Toggle-->
-        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
-                class="fas fa-bars"></i></button>
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
         <!-- Navbar Search-->
         <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
             <div class="input-group">
-                <input class="form-control" type="text" placeholder="Cari" aria-label="Search for..."
-                    aria-describedby="btnNavbarSearch" />
-                <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i
-                        class="fas fa-search"></i></button>
+                <input class="form-control" type="text" placeholder="Cari" aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
             </div>
         </form>
         <!-- Navbar-->
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" onclick="confirmLogout()">Logout</a></li>
                 </ul>
@@ -94,8 +90,7 @@ $user_fullname = $_SESSION['user_fullname'];
                         </div>
                         <div class="card-body">
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary ms-3 float-end" data-bs-toggle="modal"
-                                data-bs-target="#staticBackdrop">
+                            <button type="button" class="btn btn-primary ms-3 float-end" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                 Tambah Produk
                             </button>
                             <table border='1' id="datatablesSimple">
@@ -116,8 +111,8 @@ $user_fullname = $_SESSION['user_fullname'];
                                     $sql = "select * from produk order by KProduk asc";
                                     $hasil = mysqli_query($koneksi, $sql);
                                     $no = 1;
-                                    while ($data = mysqli_fetch_array($hasil)):
-                                        ?>
+                                    while ($data = mysqli_fetch_array($hasil)) :
+                                    ?>
                                         <tr>
                                             <td style="border: 2px solid black;">
                                                 <?php echo $no++ ?>
@@ -139,24 +134,18 @@ $user_fullname = $_SESSION['user_fullname'];
                                                 <?php echo $data["gambarproduk"]; ?>
                                             </td>
                                             <td>
-                                                <a href="#" class="btn btn-warning" role="button" class="btn btn-primary"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#modalUbah<?php echo $no; ?>">Update</a>
-                                                <a href="#" class="btn btn-danger" role="button" data-bs-toggle="modal"
-                                                    data-bs-target="#modalHapus<?php echo $no; ?>">Delete</a>
+                                                <a href="#" class="btn btn-warning" role="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalUbah<?php echo $no; ?>">Update</a>
+                                                <a href="#" class="btn btn-danger" role="button" data-bs-toggle="modal" data-bs-target="#modalHapus<?php echo $no; ?>">Delete</a>
                                             </td>
                                         </tr>
                                         <!-- Awal Modal Update -->
-                                        <div class="modal fade" id="modalUbah<?php echo $no; ?>" data-bs-backdrop="static"
-                                            data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
-                                            aria-hidden="true">
+                                        <div class="modal fade" id="modalUbah<?php echo $no; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h5 class="modal-title" id="staticBackdropLabel">Ubah Produk
                                                         </h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                            aria-label="Close"></button>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <form method="POST" action="create.php">
                                                         <div class="modal-body">
@@ -164,35 +153,30 @@ $user_fullname = $_SESSION['user_fullname'];
                                                             <div class="mb-3">
                                                                 <label for="kodeproduk" class="form-label">Kode
                                                                     Produk</label>
-                                                                <input type="text" name="kodeproduk"
-                                                                    value="<?php echo $data["KProduk"]; ?>"
-                                                                    class="form-control" readonly>
+                                                                <input type="text" name="kodeproduk" value="<?php echo $data["KProduk"]; ?>" class="form-control" readonly>
                                                             </div>
                                                             <div class="mb-3">
                                                                 <label for="namaproduk" class="form-label">Nama
                                                                     Produk</label>
-                                                                <input type="text" name="namaproduk"
-                                                                    value="<?php echo $data["NProduk"]; ?>"
-                                                                    class="form-control">
+                                                                <input type="text" name="namaproduk" value="<?php echo $data["NProduk"]; ?>" class="form-control">
                                                             </div>
                                                             <div class="mb-3">
                                                                 <label for="hargajual" class="form-label">Harga Jual</label>
-                                                                <input type="number" name="hargajual"
-                                                                    value="<?php echo $data["HJual"]; ?>"
-                                                                    class="form-control">
+                                                                <input type="number" name="hargajual" value="<?php echo $data["HJual"]; ?>" class="form-control">
                                                             </div>
                                                             <div class="mb-3">
                                                                 <label for="hargapro" class="form-label">Harga
                                                                     Produksi</label>
-                                                                <input type="number" name="hargapro"
-                                                                    value="<?php echo $data["Hproduksi"]; ?>"
-                                                                    class="form-control">
+                                                                <input type="number" name="hargapro" value="<?php echo $data["Hproduksi"]; ?>" class="form-control">
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="gambar" class="form-label">Gambar Produk</label>
+                                                                <input type="file" name="gambar" value="<?php echo $data["gambarproduk"]?>" class="form-control">
                                                             </div>
 
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="submit" name="ubah"
-                                                                class="btn btn-primary">Ubah</button>
+                                                            <button type="submit" name="ubah" class="btn btn-primary">Ubah</button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -202,16 +186,13 @@ $user_fullname = $_SESSION['user_fullname'];
 
 
                                         <!-- Awal Modal Hapus -->
-                                        <div class="modal fade" id="modalHapus<?php echo $no; ?>" data-bs-backdrop="static"
-                                            data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
-                                            aria-hidden="true">
+                                        <div class="modal fade" id="modalHapus<?php echo $no; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h5 class="modal-title" id="staticBackdropLabel">Konfirmasi Hapus
                                                         </h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                            aria-label="Close"></button>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <form method="POST" action="create.php">
                                                         <div class="modal-body">
@@ -226,8 +207,7 @@ $user_fullname = $_SESSION['user_fullname'];
 
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <input type="hidden" name="kodeproduk"
-                                                                value="<?= $data["KProduk"] ?>">
+                                                            <input type="hidden" name="kodeproduk" value="<?= $data["KProduk"] ?>">
                                                             <button type="submit" name="hapus" class="btn btn-danger">Ya,
                                                                 Hapus</button>
                                                         </div>
@@ -237,32 +217,28 @@ $user_fullname = $_SESSION['user_fullname'];
                                         </div>
                                         <!-- Akhir Modal Hapus -->
 
-                                        <?php
+                                    <?php
                                     endwhile;
                                     ?>
                                 </tbody>
                             </table>
                             <!-- Awal Modal Tambah -->
-                            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
-                                data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
-                                aria-hidden="true">
+                            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="staticBackdropLabel">Form Tambah Produk</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <form method="POST" enctype="multipart/form-data" action="create.php">
                                             <div class="modal-body">
                                                 <div class="mb-3">
                                                     <label for="kodeproduk" class="form-label">Kode Produk</label>
-                                                    <input type="text" name="kodeproduk" id="kodeproduk"
-                                                        class="form-control">
+                                                    <input type="text" name="kodeproduk" id="kodeproduk" class="form-control">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="gambar" class="form-label">Gambar Produk</label>
-                                                    <input type="file" name="gambar" class="form-control">
+                                                    <input type="file" name="gambarproduk" class="form-control">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="namaproduk" class="form-label">Nama Produk</label>
@@ -279,8 +255,7 @@ $user_fullname = $_SESSION['user_fullname'];
 
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="submit" name="simpan"
-                                                    class="btn btn-primary">Simpan</button>
+                                                <button type="submit" name="simpan" class="btn btn-primary">Simpan</button>
                                             </div>
                                         </form>
                                     </div>
@@ -302,14 +277,12 @@ $user_fullname = $_SESSION['user_fullname'];
             }
         }
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="js/scripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
     <script src="assets/demo/chart-area-demo.js"></script>
     <script src="assets/demo/chart-bar-demo.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
     <script src="js/datatables-simple-demo.js"></script>
 </body>
 
