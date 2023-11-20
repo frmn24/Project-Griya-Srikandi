@@ -119,7 +119,7 @@ $user_fullname = $_SESSION['user_fullname'];
                                     while ($data = mysqli_fetch_array($hasil)):
                                         ?>
                                         <tr>
-                                            <td style="border: 1px solid black;">
+                                            <td style="border: 2px solid black;">
                                                 <?php echo $no++ ?>
                                             </td>
                                             <td style="border: 1px solid black;">
