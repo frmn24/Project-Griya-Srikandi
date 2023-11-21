@@ -80,10 +80,6 @@ if ($gambar_error === UPLOAD_ERR_OK) {
 }
 
 if (isset($_POST['ubah'])) {
-    // $kode_produk = $_POST['kodeproduk'];
-    // $nama_produk = $_POST['namaproduk'];
-    // $harga_jual = $_POST['hargajual'];
-    // $harga_produksi = $_POST['hargapro'];
 
     $ubah = mysqli_query($koneksi, "UPDATE produk SET  
     KProduk='$_POST[kodeproduk]', NProduk='$_POST[namaproduk]', HJual='$_POST[hargajual]', Hproduksi='$_POST[hargapro]' WHERE KProduk='$_POST[kodeproduk]'");
@@ -101,26 +97,6 @@ if (isset($_POST['ubah'])) {
     }
 }
 
-// if (isset($_POST['hapus'])) {
-//     // $kode_produk = $_POST['kodeproduk'];
-//     // $nama_produk = $_POST['namaproduk'];
-//     // $harga_jual = $_POST['hargajual'];
-//     // $harga_produksi = $_POST['hargapro'];
-
-//     $hapus = mysqli_query($koneksi, "DELETE FROM produk WHERE KProduk='$_POST[kodeproduk]'");
-
-//     if($hapus){
-//         echo"<script>
-//             alert('Hapus Data Sukses');
-//             document.location='index.php';
-//             </script>";
-//     }else{
-//         echo"<script>
-//             alert('Hapus Data Gagal');
-//             document.location='index.php';
-//             </script>";
-//     }
-// }
 
 if (isset($_POST['hapus'])) {
     include "koneksi.php"; // Sertakan file koneksi
