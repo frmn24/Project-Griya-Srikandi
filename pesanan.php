@@ -130,7 +130,6 @@ $user_fullname = $_SESSION['user_fullname'];
                                         <th style="border: 1px solid black;">Status</th>
                                         <th style="border: 1px solid black;">Diskon</th>
                                         <th style="border: 1px solid black;">Konsumen</th>
-                                        <th style="border: 1px solid black;" colspan='2'>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -172,189 +171,12 @@ $user_fullname = $_SESSION['user_fullname'];
                                             <td style="border: 1px solid black;">
                                                 <?php echo $data["IdKonsumen"]; ?>
                                             </td>
-                                            <td>
-                                                <a href="#" class="btn btn-warning" role="button" class="btn btn-primary"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#modalUbah<?php echo $no; ?>">Update</a>
-                                                <a href="#" class="btn btn-danger" role="button" data-bs-toggle="modal"
-                                                    data-bs-target="#modalHapus<?php echo $no; ?>">Delete</a>
-                                            </td>
                                         </tr>
-                                        <!-- Awal Modal Update -->
-                                        <div class="modal fade" id="modalUbah<?php echo $no; ?>" data-bs-backdrop="static"
-                                            data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
-                                            aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="staticBackdropLabel">Ubah Produk
-                                                        </h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                            aria-label="Close"></button>
-                                                    </div>
-                                                    <form method="POST" action="create.php">
-                                                        <div class="modal-body">
-
-                                                            <div class="mb-3">
-                                                                <label for="NoPesanan" class="form-label">Kode
-                                                                    Produk</label>
-                                                                <input type="text" name="NoPesanan"
-                                                                    value="<?php echo $data["NoPesanan"]; ?>"
-                                                                    class="form-control" readonly>
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label for="Tpembayaran" class="form-label">Total Pembayaran</label>
-                                                                <input type="text" name="Tpembayaran"
-                                                                    value="<?php echo $data["Tpembayaran"]; ?>"
-                                                                    class="form-control">
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label for="TglPemesanan" class="form-label">Tanggal Pemesanan</label>
-                                                                <input type="number" name="TglPemesanan"
-                                                                    value="<?php echo $data["TglPemesanan"]; ?>"
-                                                                    class="form-control">
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label for="TItem" class="form-label">Total Item</label>
-                                                                <input type="number" name="TItem"
-                                                                    value="<?php echo $data["TItem"]; ?>"
-                                                                    class="form-control">
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label for="Bawal" class="form-label">Bayar Awal</label>
-                                                                <input type="number" name="Bawal"
-                                                                    value="<?php echo $data["Bawal"]; ?>"
-                                                                    class="form-control">
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label for="Kurang" class="form-label">Kurang</label>
-                                                                <input type="number" name="Kurang"
-                                                                    value="<?php echo $data["Kurang"]; ?>"
-                                                                    class="form-control">
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label for="Kembali" class="form-label">Kembalian</label>
-                                                                <input type="number" name="Kembali"
-                                                                    value="<?php echo $data["Kembali"]; ?>"
-                                                                    class="form-control">
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label for="Status" class="form-label">Status</label>
-                                                                <input type="number" name="Status"
-                                                                    value="<?php echo $data["Status"]; ?>"
-                                                                    class="form-control">
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label for="Diskon" class="form-label">Diskon</label>
-                                                                <input type="number" name="Diskon"
-                                                                    value="<?php echo $data["Diskon"]; ?>"
-                                                                    class="form-control">
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label for="IdKonsumen" class="form-label">Id Konsumen</label>
-                                                                <input type="number" name="IdKonsumen"
-                                                                    value="<?php echo $data["IdKonsumen"]; ?>"
-                                                                    class="form-control">
-                                                            </div>
-
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="submit" name="ubah"
-                                                                class="btn btn-primary">Ubah</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Akhir Modal Update -->
-
-
-                                        <!-- Awal Modal Hapus -->
-                                        <div class="modal fade" id="modalHapus<?php echo $no; ?>" data-bs-backdrop="static"
-                                            data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
-                                            aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="staticBackdropLabel">Konfirmasi Hapus
-                                                        </h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                            aria-label="Close"></button>
-                                                    </div>
-                                                    <form method="POST" action="create.php">
-                                                        <div class="modal-body">
-
-                                                            <h5 class="text-center"> Apakah Anda Yakin Akan Menghapus Data
-                                                                Ini? <br>
-                                                                <span class="text-danger">
-                                                                    <?= $data["NoPesanan"] ?> -
-                                                                    <?= $data["NoPesanan"] ?>
-                                                                </span>
-                                                            </h5>
-
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <input type="hidden" name="NoPesanan"
-                                                                value="<?= $data["NoPesanan"] ?>">
-                                                            <button type="submit" name="hapus" class="btn btn-danger">Ya,
-                                                                Hapus</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Akhir Modal Hapus -->
-
                                         <?php
                                     endwhile;
                                     ?>
                                 </tbody>
                             </table>
-                            <!-- Awal Modal Tambah -->
-                            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
-                                data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
-                                aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="staticBackdropLabel">Form Tambah Produk</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                        </div>
-                                        <form method="POST" enctype="multipart/form-data" action="create.php">
-                                            <div class="modal-body">
-                                                <div class="mb-3">
-                                                    <label for="kodeproduk" class="form-label">Kode Produk</label>
-                                                    <input type="text" name="kodeproduk" id="kodeproduk"
-                                                        class="form-control">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="gambar" class="form-label">Gambar Produk</label>
-                                                    <input type="file" name="gambar" class="form-control">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="namaproduk" class="form-label">Nama Produk</label>
-                                                    <input type="text" name="namaproduk" class="form-control">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="hargajual" class="form-label">Harga Jual</label>
-                                                    <input type="number" name="hargajual" class="form-control">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="hargapro" class="form-label">Harga Produksi</label>
-                                                    <input type="number" name="hargapro" class="form-control">
-                                                </div>
-
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="submit" name="simpan"
-                                                    class="btn btn-primary">Simpan</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Akhir Modal Tambah -->
                         </div>
                     </div>
             </main>
