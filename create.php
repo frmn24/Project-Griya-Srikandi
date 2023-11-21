@@ -15,39 +15,45 @@ if (isset($_POST['simpan'])) {
     $gambar_error = $_FILES['gambar']['error'];
 
     // Tentukan direktori penyimpanan gambar
-    $upload_dir = 'path/ke/direktori/gambar/';
+    $upload_dir = 'gambar/';
 
     // Cek apakah gambar diunggah dengan sukses
     if ($gambar_error === UPLOAD_ERR_OK) {
-        // Cek ukuran gambar (jika diperlukan)
-        // if ($gambar_size > 500000) {
-        //     echo "Maaf, gambar terlalu besar.";
-        // } else {
-        // Generate nama unik untuk gambar
-        $gambar_new_name = uniqid('produk_', true) . '_' . $gambar_name;
+        +
+            // Generate nama unik untuk gambar
+            $gambar_new_name = uniqid('produk_', true) . '_' . $gambar_name;
 
         // Pindahkan gambar ke direktori penyimpanan
         $gambar_path = $upload_dir . $gambar_new_name;
         move_uploaded_file($gambar_tmp, $gambar_path);
+        // Set izin baca untuk file gambar
+        chmod($gambar_path, 0644);
 
-        // Simpan data ke database
-        $simpan = mysqli_query($koneksi, "INSERT INTO produk (KProduk, NProduk, HJual, Hproduksi, gambarproduk) 
-        VALUES ('$kode_produk', '$nama_produk', '$harga_jual', '$harga_produksi', '$gambar_path')");
+        // Gunakan parameterized query untuk mencegah SQL Injection
+        $simpan = mysqli_prepare($koneksi, "INSERT INTO produk (KProduk, NProduk, HJual, Hproduksi, gambarproduk) VALUES (?, ?, ?, ?, ?)");
 
-        if ($simpan) {
+        // Bind parameter ke statement
+        mysqli_stmt_bind_param($simpan, 'ssdds', $kode_produk, $nama_produk, $harga_jual, $harga_produksi, $gambar_path);
+
+        // Execute statement
+        $result = mysqli_stmt_execute($simpan);
+
+        if ($result) {
             echo "<script>
                 alert('Sukses Menambah Data');
-                document.location='index.php';
+                window.location.href='index.php';
                 </script>";
+            exit();
         } else {
             echo "<script>
                 alert('Gagal Menambah Data');
-                document.location='index.php';
+                window.location.href='index.php';
                 </script>";
+            exit();
         }
     } else {
         // Handle kesalahan pengunggahan gambar
-        echo "Error uploading image.";
+        echo "Error uploading image: " . $gambar_error;
     }
 }
 
@@ -60,13 +66,13 @@ if (isset($_POST['ubah'])) {
     $ubah = mysqli_query($koneksi, "UPDATE produk SET  
     KProduk='$_POST[kodeproduk]', NProduk='$_POST[namaproduk]', HJual='$_POST[hargajual]', Hproduksi='$_POST[hargapro]' WHERE KProduk='$_POST[kodeproduk]'");
 
-    if($ubah){
-        echo"<script>
+    if ($ubah) {
+        echo "<script>
             alert('Update Sukses');
             document.location='index.php';
             </script>";
-    }else{
-        echo"<script>
+    } else {
+        echo "<script>
             alert('Update Gagal');
             document.location='index.php';
             </script>";

@@ -93,53 +93,69 @@ $user_fullname = $_SESSION['user_fullname'];
                         <div class="col-xl-3 col-md-6">
                             <div class="card bg-primary text-white mb-4">
                                 <div class="card-body">
-                                    <p class="card-text">Total Pesanan:</p>
-                                    <p class="card-text text-center mb-3 display-6">1000<br>Pesanan</p>
-                                </div>
-                                <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href="pesanan    .php">View Details</a>
-                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    <?php
+                                    include "koneksi.php";
+                                    $sql = "SELECT COUNT(*) as total_pesanan FROM pemesanan";
+                                    $hasil = mysqli_query($koneksi, $sql);
+                                    $no = 1;
+                                    while ($data = mysqli_fetch_array($hasil)):
+                                        ?>
+                                        <p class="card-text">Total Pesanan:</p>
+                                        <p class="card-text text-center mb-3 display-6">
+                                            <?php echo $data['total_pesanan']; ?><br>Pesanan
+                                        </p>
+                                    </div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" href="pesanan.php">View Details</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                        
+                        <?php endwhile; ?>
                         <div class="col-xl-3 col-md-6">
                             <div class="card bg-warning text-white mb-4">
                                 <div class="card-body">
-                                    <p class="card-text">Total Pemasukan:</p>
-                                    <p class="card-text text-center mb-3 display-6">1000<br>Pesanan</p>
-                                </div>
-                                <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href="pemasukan.php">View Details</a>
-                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    <?php
+                                    include "koneksi.php";
+                                    $sql = "SELECT SUM(TPembayaran) as total_pemasukan FROM pemesanan";
+                                    $hasil = mysqli_query($koneksi, $sql);
+                                    $no = 1;
+                                    while ($data = mysqli_fetch_array($hasil)):
+                                        ?>
+                                        <p class="card-text">Total Pemasukan:</p>
+                                        <p class="card-text text-center mb-3 display-6">
+                                            <?php echo $data['total_pemasukan']; ?><br>Rupiah
+                                        </p>
+                                    </div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" href="pemasukan.php">View Details</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        <?php endwhile; ?>
                         <div class="col-xl-3 col-md-6">
                             <div class="card bg-success text-white mb-4">
                                 <div class="card-body">
-                                    <p class="card-text">Total Pesanan:</p>
-                                    <p class="card-text text-center mb-3 display-6">1000<br>Pesanan</p>
-                                </div>
-                                <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href="#">View Details</a>
-                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-md-6">
-                            <div class="card bg-warning text-white mb-4">
-                                <div class="card-body">
-                                    <p class="card-text">Total Pemasukan:</p>
-                                    <p class="card-text text-center mb-3 display-6">1000<br>Pesanan</p>
-                                </div>
-                                <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href="pemasukan.php">View Details</a>
-                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    <?php
+                                    include "koneksi.php";
+                                    $sql = "SELECT COUNT(*) as total_produk FROM produk";
+                                    $hasil = mysqli_query($koneksi, $sql);
+                                    $no = 1;
+                                    while ($data = mysqli_fetch_array($hasil)):
+                                        ?>
+                                        <p class="card-text">Total Produk:</p>
+                                        <p class="card-text text-center mb-3 display-6">
+                                            <?php echo $data['total_produk']; ?><br>Produk
+                                        </p>
+                                    </div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" href="#">View Details</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        <?php endwhile; ?>
                     </div>
                     <div class="row">
                         <div class="col-xl-6">

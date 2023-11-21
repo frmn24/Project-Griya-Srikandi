@@ -129,9 +129,8 @@ $user_fullname = $_SESSION['user_fullname'];
                                             <td style="border: 1px solid black;">
                                                 <?php echo $data["Hproduksi"]; ?>
                                             </td>
-                                            <!-- Tampilkan path gambar -->
-                                            <td style="border: 1px solid black;">
-                                                <?php echo $data["gambarproduk"]; ?>
+                                            <td style="border: 1px solid black;"><img
+                                                    src="gambar/<?php echo $data['gambarproduk']; ?>">
                                             </td>
                                             <td>
                                                 <a href="#" class="btn btn-warning" role="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalUbah<?php echo $no; ?>">Update</a>
@@ -236,10 +235,7 @@ $user_fullname = $_SESSION['user_fullname'];
                                                     <label for="kodeproduk" class="form-label">Kode Produk</label>
                                                     <input type="text" name="kodeproduk" id="kodeproduk" class="form-control">
                                                 </div>
-                                                <div class="mb-3">
-                                                    <label for="gambar" class="form-label">Gambar Produk</label>
-                                                    <input type="file" name="gambarproduk" class="form-control">
-                                                </div>
+                                                
                                                 <div class="mb-3">
                                                     <label for="namaproduk" class="form-label">Nama Produk</label>
                                                     <input type="text" name="namaproduk" class="form-control">
@@ -251,6 +247,10 @@ $user_fullname = $_SESSION['user_fullname'];
                                                 <div class="mb-3">
                                                     <label for="hargapro" class="form-label">Harga Produksi</label>
                                                     <input type="number" name="hargapro" class="form-control">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="gambar" class="form-label">Gambar Produk</label>
+                                                    <input type="file" name="gambarproduk" class="form-control">
                                                 </div>
 
                                             </div>
