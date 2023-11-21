@@ -192,31 +192,6 @@ $user_fullname = $_SESSION['user_fullname'];
             }
         }
     </script>
-    <!-- <script>
-        // Fungsi untuk menampilkan modal dan mengisi input kode produk secara otomatis
-        function showModalWithAutoKodeProduk() {
-            // Dapatkan referensi modal dan input kode produk
-            var modal = document.querySelector(".modal-content");
-            var kodeprodukInput = document.getElementById("kodeproduk");
-
-            // Lakukan permintaan AJAX untuk mendapatkan kode produk berikutnya
-            fetch("generate_kode_produk.php")
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error("Network response was not ok");
-                    }
-                    return response.text();
-                })
-                .then(data => {
-                    // Isi input kode produk dengan kode yang dihasilkan
-                    kodeprodukInput.value = data;
-
-                    // Tampilkan modal
-                    modal.style.display = "block";
-                })
-                .catch(error => console.error("Error fetching kode produk: " + error));
-        }
-    </script> -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>

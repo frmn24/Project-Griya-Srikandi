@@ -91,12 +91,12 @@ if (isset($_POST['ubah'])) {
     if ($ubah) {
         echo "<script>
             alert('Update Sukses');
-            document.location='index.php';
+            window.location.href='databarang.php';
             </script>";
     } else {
         echo "<script>
             alert('Update Gagal');
-            document.location='index.php';
+            window.location.href='databarang.php';
             </script>";
     }
 }
