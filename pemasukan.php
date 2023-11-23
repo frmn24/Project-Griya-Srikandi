@@ -23,6 +23,7 @@ $user_fullname = $_SESSION['user_fullname'];
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 </head>
 
 <body class="sb-nav-fixed">
@@ -85,69 +86,64 @@ $user_fullname = $_SESSION['user_fullname'];
                 <div class="container-fluid px-4">
                     <h1 class="mt-4"></h1>
                     <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item active" style="font-size: 24px; font-weight: bold;">Pemasukan</li>
+                        <li class="breadcrumb-item active" style="font-size: 24px; font-weight: bold;">Pemasukan
+                        </li>
                     </ol>
                     <div class="row">
                         <div class="col-xl-6">
-                            <div class="card mb-4">
-                                <div class="card-header">
-                                    <i class="fas fa-chart-area me-1"></i>
-                                    Pemasukan
-                                </div>
-                                <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6">
-                            <div class="card mb-4">
-                                <div class="card-header">
-                                    <i class="fas fa-chart-bar me-1"></i>
-                                    Pemasukan
-                                </div>
-                                <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
-                            </div>
+                            <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+                            <script>
+                                var xValues = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli"];
+                                var yValues = [55, 49, 44, 24, 15];
+                                var barColors = ["red", "green", "blue", "orange", "brown"];
+
+                                new Chart("myChart", {
+                                    type: "bar",
+                                    data: {
+                                        labels: xValues,
+                                        datasets: [{
+                                            backgroundColor: barColors,
+                                            data: yValues
+                                        }]
+                                    },
+                                    options: {
+                                        legend: { display: false },
+                                        title: {
+                                            display: true,
+                                            text: "World Wine Production 2018"
+                                        }
+                                    }
+                                });
+                            </script>
                         </div>
                     </div>
                     <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-table me-1"></i>
-                                Tabel Pemasukan
-                            </div>
-                            <div class="card-body">
-                                <table id="datatablesSimple">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                        <div class="card-header">
+                            <i class="fas fa-table me-1"></i>
+                            Tabel Pemasukan
+                        </div>
+                        <div class="card-body">
+                            <table id="datatablesSimple">
+                                <thead>
+                                    <tr>
+                                        <th style="border: 1px solid black;">Nomor Pemesanan</th>
+                                        <th style="border: 1px solid black;">Total Pembayaran</th>
+                                        <th style="border: 1px solid black;">Tanggal Pemesanan</th>
+                                        <th style="border: 1px solid black;">Total Item</th>
+                                        <th style="border: 1px solid black;">Bayar Awal</th>
+                                        <th style="border: 1px solid black;">Kurang</th>
+                                        <th style="border: 1px solid black;">Kembali</th>
+                                        <th style="border: 1px solid black;">Status</th>
+                                        <th style="border: 1px solid black;">Diskon</th>
+                                        <th style="border: 1px solid black;">Konsumen</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
+                </div>
             </main>
             <footer>
             </footer>

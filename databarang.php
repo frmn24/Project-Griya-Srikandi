@@ -134,8 +134,15 @@ $user_fullname = $_SESSION['user_fullname'];
                                             <td style="border: 1px solid black;">
                                                 <?php echo $data["Hproduksi"]; ?>
                                             </td>
-                                            <td style="border: 1px solid black;"><img
-                                                    src="gambar/<?php echo $data['gambarproduk']; ?>">
+                                            <td>
+                                                <?php
+                                                if (!empty($data["gambarproduk"])) {
+                                                    $gambar_path = $data["gambarproduk"];
+                                                    echo "<img src='$gambar_path' alt='Gambar Produk' style='max-width: 100px; max-height: 100px;'>";
+                                                } else {
+                                                    echo "Tidak Ada Gambar";
+                                                }
+                                                ?>
                                             </td>
                                             <td>
                                                 <a href="#" class="btn btn-warning" role="button" class="btn btn-primary"

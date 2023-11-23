@@ -23,6 +23,7 @@ $user_fullname = $_SESSION['user_fullname'];
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 </head>
 
 <body class="sb-nav-fixed">
@@ -88,33 +89,132 @@ $user_fullname = $_SESSION['user_fullname'];
                         <li class="breadcrumb-item active" style="font-size: 24px; font-weight: bold;">Pemesanan</li>
                     </ol>
                     <div class="row">
-                        <div class="col-xl-6">
-                            <div class="card mb-4">
-                                <div class="card-header">
-                                    <i class="fas fa-chart-area me-1"></i>
-                                    Pemasukan
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card bg-primary text-white mb-4">
+                                <div class="card-body">
+                                    <?php
+                                    include "koneksi.php";
+                                    $sql = "SELECT COUNT(*) as total_pesanan FROM pemesanan";
+                                    $hasil = mysqli_query($koneksi, $sql);
+                                    $no = 1;
+                                    while ($data = mysqli_fetch_array($hasil)):
+                                        ?>
+                                        <p class="card-text">Total Pesanan:</p>
+                                        <p class="card-text text-center mb-3 display-6">
+                                            <?php echo $data['total_pesanan']; ?><br>Pesanan
+                                        </p>
+                                    </div>
                                 </div>
-                                <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
+                            </div>
+                        <?php endwhile; ?>
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card bg-success text-white mb-4">
+                                <div class="card-body">
+                                    <p class="card-text">Pesanan Masuk:</p>
+                                    <p class="card-text text-center mb-3 display-6">
+                                        <br>Pesanan
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-xl-6">
-                            <div class="card mb-4">
-                                <div class="card-header">
-                                    <i class="fas fa-chart-bar me-1"></i>
-                                    Pemasukan
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card bg-warning text-white mb-4">
+                                <div class="card-body">
+                                    <p class="card-text">Dalam Proses:</p>
+                                    <p class="card-text text-center mb-3 display-6">
+                                        <br>Pesanan
+                                    </p>
                                 </div>
-                                <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
                             </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card bg-secondary text-white mb-4">
+                                <div class="card-body">
+                                    <p class="card-text">Selesai:</p>
+                                    <p class="card-text text-center mb-3 display-6">
+                                        <br>Pesanan
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--grafik-->
+                        <div class="col-xl-6">
+                            <?php
+                            include "koneksi.php";
+
+                            // Query untuk mengambil nilai bulan dari kolom TglPemesanan
+                            $result = mysqli_query($koneksi, "SELECT MONTH(TglPemesanan) AS bulan, SUM(TPembayaran) AS total FROM pemesanan GROUP BY bulan;");
+
+                            // Mengambil hasil query ke dalam array
+                            $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+                            // Inisialisasi array untuk menyimpan data bulan dan total
+                            $bulanArray = [];
+                            $totalArray = [];
+
+                            // Array bulan statis
+                            $allMonths = range(1, 12);
+
+                            // Mengisi nilai nol untuk setiap bulan
+                            $filledData = array_fill_keys($allMonths, 0);
+
+                            // Mengisi nilai total yang diperoleh dari hasil query
+                            foreach ($data as $row) {
+                                $filledData[$row['bulan']] = $row['total'];
+                            }
+
+                            // Mengonversi nilai bulan numerik menjadi nama bulan
+                            $bulanArray = array_map(function ($bulan) {
+                                return date('F', mktime(0, 0, 0, $bulan, 1));
+                            }, array_keys($filledData));
+
+                            // Memisahkan data bulan dan total menjadi dua array terpisah
+                            $totalArray = array_values($filledData);
+                            ?>
+
+                            <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+                            <script>
+                                // Menggunakan data yang diambil dari database
+                                var xValues = <?php echo json_encode($bulanArray); ?>;
+                                var yValues = <?php echo json_encode($totalArray); ?>;
+                                var barColors = ["red", "green", "blue", "orange", "brown", "purple", "pink", "gray", "cyan", "magenta", "yellow", "lime"];
+
+                                new Chart("myChart", {
+                                    type: "bar",
+                                    data: {
+                                        labels: xValues,
+                                        datasets: [{
+                                            backgroundColor: barColors,
+                                            data: yValues
+                                        }]
+                                    },
+                                    options: {
+                                        legend: { display: false },
+                                        title: {
+                                            display: true,
+                                        }
+                                    }
+                                });
+                            </script>
                         </div>
                     </div>
                     <div class="card mb-4">
                         <div class="card-header">
-                            <i class="fas fa-table me-1"></i>
-                            Tabel Pesanan  
-                            <button type="button" class="btn btn-primary ms-6 float-end" data-bs-toggle="modal"
-                                data-bs-target="#staticBackdrop">
-                                Tambah Produk
-                            </button>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <i class="fas fa-table me-1"></i>
+                                    Tabel Pesanan
+                                </div>
+                                <div>
+                                    <label for="tableDropdown" class="mr-2">Pilih Tabel:</label>
+                                    <select id="tableDropdown" onchange="changeTable()">
+                                        <option value="datatablesSimple">Pesanan Masuk</option>
+                                        <option value="datatablesSimple">Dalam Proses</option>
+                                        <option value="datatablesSimple">Selesai</option>
+                                        <!-- Tambahkan opsi lain jika diperlukan -->
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                         <div class="card-body">
                             <table border='1' id="datatablesSimple">
@@ -190,7 +290,7 @@ $user_fullname = $_SESSION['user_fullname'];
             } else {
 
             }
-        }
+    }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
