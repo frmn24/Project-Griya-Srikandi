@@ -11,7 +11,6 @@ if (!isset($_SESSION['user_email'])) {
 $user_fullname = $_SESSION['user_fullname'];
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
