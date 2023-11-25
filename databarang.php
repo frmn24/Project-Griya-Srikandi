@@ -28,7 +28,9 @@ $user_fullname = $_SESSION['user_fullname'];
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3">Admin: <?php echo $user_fullname; ?></a>
+        <a class="navbar-brand ps-3">Admin:
+            <?php echo $user_fullname; ?>
+        </a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
                 class="fas fa-bars"></i></button>
@@ -137,13 +139,14 @@ $user_fullname = $_SESSION['user_fullname'];
                                             <td>
                                                 <?php
                                                 if (!empty($data["gambarproduk"])) {
-                                                    $gambar_path = $data["gambarproduk"];
+                                                    $gambar_path = 'gambar/' . $data["gambarproduk"]; // Sesuaikan dengan direktori tempat gambar disimpan
                                                     echo "<img src='$gambar_path' alt='Gambar Produk' style='max-width: 100px; max-height: 100px;'>";
                                                 } else {
                                                     echo "Tidak Ada Gambar";
                                                 }
                                                 ?>
                                             </td>
+
 
                                             <td>
                                                 <a href="#" class="btn btn-warning" role="button" class="btn btn-primary"

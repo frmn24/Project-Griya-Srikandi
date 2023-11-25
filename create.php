@@ -33,7 +33,8 @@ if ($gambar_error === UPLOAD_ERR_OK) {
     $gambar_new_name = uniqid('produk_', true) . '_' . $gambar_name;
 
     // Pindahkan gambar ke direktori penyimpanan
-    $gambar_path = $upload_dir . $gambar_new_name; // Menggunakan $upload_dir
+    $gambar_new_name = uniqid('produk_', true) . '_' . $gambar_name;
+    $gambar_path = $upload_dir . $gambar_new_name;
     move_uploaded_file($gambar_tmp, $gambar_path);
 
     // Set izin baca untuk file gambar
@@ -57,8 +58,11 @@ if ($gambar_error === UPLOAD_ERR_OK) {
     // Gunakan parameterized query untuk mencegah SQL Injection
     $simpan = mysqli_prepare($koneksi, "INSERT INTO produk (KProduk, NProduk, HJual, Hproduksi, gambarproduk) VALUES (?, ?, ?, ?, ?)");
 
+    // Ambil hanya nama file gambar (tanpa direktori)
+    $gambar_name_only = basename($gambar_path);
+
     // Bind parameter ke statement
-    mysqli_stmt_bind_param($simpan, 'ssdds', $kode_produk, $nama_produk, $harga_jual, $harga_produksi, $gambar_path);
+    mysqli_stmt_bind_param($simpan, 'ssdds', $kode_produk, $nama_produk, $harga_jual, $harga_produksi, $gambar_name_only);
 
     // Execute statement
     $result = mysqli_stmt_execute($simpan);
