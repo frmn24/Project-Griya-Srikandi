@@ -33,8 +33,9 @@ if ($gambar_error === UPLOAD_ERR_OK) {
     $gambar_new_name = uniqid('produk_', true) . '_' . $gambar_name;
 
     // Pindahkan gambar ke direktori penyimpanan
-    $gambar_path = $gambar_new_name;
+    $gambar_path = $upload_dir . $gambar_new_name; // Menggunakan $upload_dir
     move_uploaded_file($gambar_tmp, $gambar_path);
+
     // Set izin baca untuk file gambar
     chmod($gambar_path, 0644);
 
