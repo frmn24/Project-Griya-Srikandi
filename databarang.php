@@ -168,7 +168,7 @@ $user_fullname = $_SESSION['user_fullname'];
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                             aria-label="Close"></button>
                                                     </div>
-                                                    <form method="POST" action="create.php">
+                                                    <form method="POST" action="create.php" enctype="multipart/form-data">
                                                         <div class="modal-body">
 
                                                             <div class="mb-3">
@@ -200,7 +200,7 @@ $user_fullname = $_SESSION['user_fullname'];
                                                             </div>
                                                             <div class="mb-3">
                                                                 <label for="gambar" class="form-label">Gambar Produk</label>
-                                                                <input type="file" name="gambar" class="form-control">
+                                                                <input type="file" name="gambar" accept="image/*" class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">

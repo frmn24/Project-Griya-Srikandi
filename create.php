@@ -87,7 +87,6 @@ if ($gambar_error === UPLOAD_ERR_OK) {
 
 if (isset($_POST['ubah'])) {
     // Lakukan sanitasi input jika diperlukan
-    // Lakukan sanitasi input jika diperlukan
     $kode_produk = mysqli_real_escape_string($koneksi, $_POST['kodeproduk']);
     $nama_produk = mysqli_real_escape_string($koneksi, $_POST['namaproduk']);
     $harga_jual = mysqli_real_escape_string($koneksi, $_POST['hargajual']);
@@ -99,42 +98,25 @@ if (isset($_POST['ubah'])) {
     $gambar_size = $_FILES['gambar']['size'];
     $gambar_error = $_FILES['gambar']['error'];
 
-    // Inisialisasi $gambar_path dengan nilai yang ada di database
-    $gambar_path = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT gambarproduk FROM produk WHERE KProduk='$kode_produk'"))['gambarproduk'];
-
-    // Jika ada gambar yang dipilih dan nama gambar baru tidak kosong, simpan gambar seperti pada formulir simpan
+    // Gunakan parameterized query untuk mencegah SQL Injection
     if ($gambar_error === UPLOAD_ERR_OK && $gambar_name != "") {
+        // Jika ada gambar yang dipilih dan nama gambar baru tidak kosong, simpan gambar seperti pada formulir simpan
+        $update = mysqli_prepare($koneksi, "UPDATE produk SET NProduk=?, HJual=?, Hproduksi=?, gambarproduk=? WHERE KProduk=?");
         $gambar_new_name = uniqid('produk_', true) . '_' . $gambar_name;
         $gambar_path = $upload_dir . $gambar_new_name;
         move_uploaded_file($gambar_tmp, $gambar_path);
         chmod($gambar_path, 0644);
+        mysqli_stmt_bind_param($update, 'sddss', $nama_produk, $harga_jual, $harga_produksi, $gambar_path, $kode_produk);
+    } else {
+        // Jika tidak ada gambar yang dipilih atau gagal mengunggah gambar, update tanpa mengubah gambar
+        $update = mysqli_prepare($koneksi, "UPDATE produk SET NProduk=?, HJual=?, Hproduksi=? WHERE KProduk=?");
+        mysqli_stmt_bind_param($update, 'sdds', $nama_produk, $harga_jual, $harga_produksi, $kode_produk);
     }
-
-    // Gunakan parameterized query untuk mencegah SQL Injection
-    $update = mysqli_prepare($koneksi, "UPDATE produk SET NProduk=?, HJual=?, Hproduksi=?, gambarproduk=? WHERE KProduk=?");
-
-    // Bind parameter ke statement
-    mysqli_stmt_bind_param($update, 'sdds', $nama_produk, $harga_jual, $harga_produksi, $gambar_path, $_POST['kodeproduk']);
 
     // Execute statement
     $result = mysqli_stmt_execute($update);
 
-
-    // $update = mysqli_query($koneksi, "UPDATE produk SET  
-    //     NProduk='$nama_produk', HJual='$harga_jual', Hproduksi='$harga_produksi' WHERE KProduk='$kode_produk'");
-
-    if ($update) {
-        // Jika ada gambar yang dipilih dan nama gambar baru tidak kosong, simpan gambar seperti pada formulir simpan
-        if ($gambar_error === UPLOAD_ERR_OK && $gambar_name != "") {
-            $gambar_new_name = uniqid('produk_', true) . '_' . $gambar_name;
-            $gambar_path = $upload_dir . $gambar_new_name;
-            move_uploaded_file($gambar_tmp, $gambar_path);
-            chmod($gambar_path, 0644);
-
-            // Update path gambar ke database
-            mysqli_query($koneksi, "UPDATE produk SET gambarproduk='$gambar_path' WHERE KProduk='$kode_produk'");
-        }
-
+    if ($result) {
         echo "<script>
             alert('Update Sukses');
             window.location.href='databarang.php';
@@ -145,7 +127,6 @@ if (isset($_POST['ubah'])) {
             window.location.href='databarang.php';
             </script>";
     }
-
 }
 
 
