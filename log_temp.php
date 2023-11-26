@@ -1,6 +1,6 @@
 <?php
 session_start();
-$koneksi = mysqli_connect("localhost", "root", "", "griya");
+$koneksi = mysqli_connect("localhost", "root", "", "griya3");
 if (isset($_POST['login'])) {
     $email = $_POST['email'];
     $pass = $_POST['password'];
@@ -67,27 +67,12 @@ if (isset($_POST['login'])) {
                                     <div class="col-md-7" style="margin-top: 50px;">
                                         <h3 class="text-center font-weight-light my-4" style="text-align:center;">WELCOME</h3>
                                         <div class="card-body">
-                                            <!-- <form method="post" action="log_temp.php">
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="inputEmail" type="email" name="email" placeholder="name@example.com" />
-                                <label for="inputEmail">Masukkan Alamat Email</label>
-                            </div>
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="inputPassword" type="password" name="password" placeholder="Password" />
-                                <label for="inputPassword">Masukkan Kata Sandi</label>
-                            </div>
-                            <div class="form-check mb-3">
-                                <input class="form-check-input" id="inputRememberPassword" type="checkbox" value="" />
-                                <label class="form-check-label" for="inputRememberPassword">Ingat Saya</label>
-                            </div>
-                            
-                                            </form> -->
-                                            <form class="user" action="index.php" method="post" style="margin-right:30px; margin-top: 50px;">
+                                            <form class="user" action="login.php" method="post" style="margin-right:30px; margin-top: 50px;">
                                                 <div class="form-group">
                                                     <input type="email" name="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Masukkan Alamat Email...">
                                                 </div>
                                                 <div class="form-group">
-                                                    <input type="password" name="pass" class="form-control form-control-user" id="exampleInputPassword" placeholder="Masukan Kata Sandi..">
+                                                    <input type="password" name="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Masukan Kata Sandi..">
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="custom-control custom-checkbox small">
@@ -96,7 +81,7 @@ if (isset($_POST['login'])) {
                                                         <a class="small" href="password.php" style="margin-left: 200px;">Lupa Kata Sandi?</a>
                                                     </div>
                                                 </div>
-                                                <input type="submit" name="submit" class="btn btn-primary btn-user btn-block" value="Masuk">
+                                                <input type="submit" name="login" class="btn btn-primary btn-user btn-block" value="Masuk">
                                             </form>
                                         </div>
                                     </div>

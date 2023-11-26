@@ -336,6 +336,41 @@ th {
   border-width: 0;
 }
 
+form.user .custom-checkbox.small label {
+  line-height: 1.5rem
+}
+
+form.user .form-control-user {
+  font-size: .8rem;
+  border-radius: 10rem;
+  padding: 1.5rem 1rem
+}
+
+form.user .btn-user {
+  font-size: .8rem;
+  border-radius: 10rem;
+  padding: .75rem 1rem
+}
+
+.form-group {
+  margin-bottom: 1rem
+}
+
+.test_gambar{
+  width: 350px;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #4e73df;
+  border-color: #4e73df
+}
+
+.btn-block {
+  display: block;
+  width: 100%
+}
+
 label {
   display: inline-block;
 }
