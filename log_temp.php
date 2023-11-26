@@ -69,16 +69,16 @@ if (isset($_POST['login'])) {
                                         <div class="card-body">
                                             <form class="user" action="login.php" method="post" style="margin-right:30px; margin-top: 50px;">
                                                 <div class="form-group">
-                                                    <input type="email" name="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Masukkan Alamat Email...">
+                                                    <input type="email" name="email" class="form-control form-control-user" id="inputEmail" aria-describedby="emailHelp" placeholder="Masukkan Alamat Email...">
                                                 </div>
                                                 <div class="form-group">
-                                                    <input type="password" name="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Masukan Kata Sandi..">
+                                                    <input type="password" name="password" class="form-control form-control-user" id="inputPassword" placeholder="Masukan Kata Sandi..">
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="custom-control custom-checkbox small">
-                                                        <input type="checkbox" class="custom-control-input" id="customCheck" style="margin-left:20px;">
+                                                        <input type="checkbox" class="custom-control-input" id="inputRememberPassword" style="margin-left:20px;">
                                                         <label class="custom-control-label" for="customCheck" style="margin-left:3px;">Ingat saya</label>
-                                                        <a class="small" href="password.php" style="margin-left: 200px;">Lupa Kata Sandi?</a>
+                                                        <!-- <a class="small" href="password.php" style="margin-left: 200px;">Lupa Kata Sandi?</a> -->
                                                     </div>
                                                 </div>
                                                 <input type="submit" name="login" class="btn btn-primary btn-user btn-block" value="Masuk">
@@ -89,7 +89,6 @@ if (isset($_POST['login'])) {
                             </div>
                         </div>
                     </div>
-
                 </div>
             </main>
         </div>
