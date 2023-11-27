@@ -223,7 +223,7 @@ $user_fullname = $_SESSION['user_fullname'];
                                 <tbody>
                                     <?php
                                     include "koneksi.php";
-                                    $sql = "select * from detail_pesanan";
+                                    $sql = "SELECT * FROM detail_pesanan";
                                     $hasil = mysqli_query($koneksi, $sql);
                                     $no = 1;
                                     while ($data = mysqli_fetch_array($hasil)):
