@@ -163,8 +163,19 @@ $user_fullname = $_SESSION['user_fullname'];
                         </div>
                         <div class="card mb-4">
                             <div class="card-header">
-                                <i class="fas fa-table me-1"></i>
-                                Tabel Pemasukan
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <i class="fas fa-table me-1"></i>
+                                        Tabel Pemasukan
+                                    </div>
+                                    <div>
+                                        <label for="tableDropdown2" class="mr-2">Pilih Tabel:</label>
+                                        <select id="tableDropdown2" onchange="changeTable()">
+                                            <option value="#">Lunas</option>
+                                            <option value="#">Belum Lunas</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                             <div class="card-body">
                                 <table border='1' id="datatablesSimple">
