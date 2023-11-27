@@ -167,7 +167,7 @@ $user_fullname = $_SESSION['user_fullname'];
                                 Tabel Pemasukan
                             </div>
                             <div class="card-body">
-                                <table id="datatablesSimple">
+                                <table border='1' id="datatablesSimple">
                                     <thead>
                                         <tr>
                                             <th style="border: 1px solid black;">Nomor Pemesanan</th>
@@ -180,9 +180,52 @@ $user_fullname = $_SESSION['user_fullname'];
                                             <th style="border: 1px solid black;">Status</th>
                                             <th style="border: 1px solid black;">Diskon</th>
                                             <th style="border: 1px solid black;">Konsumen</th>
+                                            <!-- <th style="border: 1px solid black;" colspan='2'>Aksi</th> -->
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php
+                                        include "koneksi.php";
+                                        $sql = "select * from pemesanan";
+                                        $hasil = mysqli_query($koneksi, $sql);
+                                        $no = 1;
+                                        while ($data = mysqli_fetch_array($hasil)):
+                                            ?>
+                                            <tr>
+                                                <td style="border: 1px solid black;">
+                                                    <?php echo $data["NoPesanan"]; ?>
+                                                </td>
+                                                <td style="border: 1px solid black;">
+                                                    <?php echo $data["TPembayaran"]; ?>
+                                                </td>
+                                                <td style="border: 1px solid black;">
+                                                    <?php echo $data["TglPemesanan"]; ?>
+                                                </td>
+                                                <td style="border: 1px solid black;">
+                                                    <?php echo $data["TItem"]; ?>
+                                                </td>
+                                                <td style="border: 1px solid black;">
+                                                    <?php echo $data["Bawal"]; ?>
+                                                </td>
+                                                <td style="border: 1px solid black;">
+                                                    <?php echo $data["Kurang"]; ?>
+                                                </td>
+                                                <td style="border: 1px solid black;">
+                                                    <?php echo $data["Kembali"]; ?>
+                                                </td>
+                                                <td style="border: 1px solid black;">
+                                                    <?php echo $data["Status"]; ?>
+                                                </td>
+                                                <td style="border: 1px solid black;">
+                                                    <?php echo $data["Diskon"]; ?>
+                                                </td>
+                                                <td style="border: 1px solid black;">
+                                                    <?php echo $data["IdKonsumen"]; ?>
+                                                </td>
+                                            </tr>
+                                            <?php
+                                        endwhile;
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>

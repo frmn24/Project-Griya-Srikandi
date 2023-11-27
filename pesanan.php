@@ -29,7 +29,9 @@ $user_fullname = $_SESSION['user_fullname'];
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3">Admin: <?php echo $user_fullname; ?></a>
+        <a class="navbar-brand ps-3">Admin:
+            <?php echo $user_fullname; ?>
+        </a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
                 class="fas fa-bars"></i></button>
@@ -110,35 +112,82 @@ $user_fullname = $_SESSION['user_fullname'];
                         <div class="col-xl-3 col-md-6">
                             <div class="card bg-success text-white mb-4">
                                 <div class="card-body">
-                                    <p class="card-text">Pesanan Masuk:</p>
-                                    <p class="card-text text-center mb-3 display-6">
-                                        <br>Pesanan
-                                    </p>
+                                    <?php
+                                    include "koneksi.php";
+                                    $sql = "SELECT COUNT(*) as total_pesanan FROM detail_pesanan WHERE keterangan = 'Pesanan Masuk'";
+                                    $hasil = mysqli_query($koneksi, $sql);
+
+                                    if ($hasil) {
+                                        $data = mysqli_fetch_array($hasil);
+                                        $total_pesanan = $data['total_pesanan'];
+                                        ?>
+                                        <p class="card-text">Total Pesanan Masuk:</p>
+                                        <p class="card-text text-center mb-3 display-6">
+                                            <?php echo $total_pesanan; ?><br>Pesanan
+                                        </p>
+                                        <?php
+                                    } else {
+                                        echo "Error: " . mysqli_error($koneksi);
+                                    }
+
+                                    mysqli_close($koneksi);
+                                    ?>
                                 </div>
                             </div>
                         </div>
                         <div class="col-xl-3 col-md-6">
                             <div class="card bg-warning text-white mb-4">
                                 <div class="card-body">
-                                    <p class="card-text">Dalam Proses:</p>
-                                    <p class="card-text text-center mb-3 display-6">
-                                        <br>Pesanan
-                                    </p>
+                                    <?php
+                                    include "koneksi.php";
+                                    $sql = "SELECT COUNT(*) as total_pesanan FROM detail_pesanan WHERE keterangan = 'Dalam Proses'";
+                                    $hasil = mysqli_query($koneksi, $sql);
+
+                                    if ($hasil) {
+                                        $data = mysqli_fetch_array($hasil);
+                                        $total_pesanan = $data['total_pesanan'];
+                                        ?>
+                                        <p class="card-text">Total Pesanan Masuk:</p>
+                                        <p class="card-text text-center mb-3 display-6">
+                                            <?php echo $total_pesanan; ?><br>Pesanan
+                                        </p>
+                                        <?php
+                                    } else {
+                                        echo "Error: " . mysqli_error($koneksi);
+                                    }
+
+                                    mysqli_close($koneksi);
+                                    ?>
                                 </div>
                             </div>
                         </div>
                         <div class="col-xl-3 col-md-6">
                             <div class="card bg-secondary text-white mb-4">
                                 <div class="card-body">
-                                    <p class="card-text">Selesai:</p>
-                                    <p class="card-text text-center mb-3 display-6">
-                                        <br>Pesanan
-                                    </p>
+                                    <?php
+                                    include "koneksi.php";
+                                    $sql = "SELECT COUNT(*) as total_pesanan FROM detail_pesanan WHERE keterangan = 'Selesai'";
+                                    $hasil = mysqli_query($koneksi, $sql);
+                                    if ($hasil) {
+                                        $data = mysqli_fetch_array($hasil);
+                                        $total_pesanan = $data['total_pesanan'];
+                                        ?>
+                                        <p class="card-text">Total Pesanan Masuk:</p>
+                                        <p class="card-text text-center mb-3 display-6">
+                                            <?php echo $total_pesanan; ?><br>Pesanan
+                                        </p>
+                                        <?php
+                                    } else {
+                                        echo "Error: " . mysqli_error($koneksi);
+                                    }
+
+                                    mysqli_close($koneksi);
+                                    ?>
                                 </div>
                             </div>
                         </div>
                         <!--grafik-->
-                        
+
                     </div>
                     <div class="card mb-4">
                         <div class="card-header">
@@ -163,22 +212,18 @@ $user_fullname = $_SESSION['user_fullname'];
                                 <thead>
                                     <tr>
                                         <th style="border: 1px solid black;">Nomor Pemesanan</th>
-                                        <th style="border: 1px solid black;">Total Pembayaran</th>
-                                        <th style="border: 1px solid black;">Tanggal Pemesanan</th>
+                                        <th style="border: 1px solid black;">Kode Produk</th>
+                                        <th style="border: 1px solid black;">Harga Produk</th>
                                         <th style="border: 1px solid black;">Total Item</th>
-                                        <th style="border: 1px solid black;">Bayar Awal</th>
-                                        <th style="border: 1px solid black;">Kurang</th>
-                                        <th style="border: 1px solid black;">Kembali</th>
-                                        <th style="border: 1px solid black;">Status</th>
-                                        <th style="border: 1px solid black;">Diskon</th>
-                                        <th style="border: 1px solid black;">Konsumen</th>
+                                        <th style="border: 1px solid black;">Tanggal Ambil</th>
+                                        <th style="border: 1px solid black;">Keterangan</th>
                                         <!-- <th style="border: 1px solid black;" colspan='2'>Aksi</th> -->
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
                                     include "koneksi.php";
-                                    $sql = "select * from pemesanan";
+                                    $sql = "select * from detail_pesanan";
                                     $hasil = mysqli_query($koneksi, $sql);
                                     $no = 1;
                                     while ($data = mysqli_fetch_array($hasil)):
@@ -188,31 +233,19 @@ $user_fullname = $_SESSION['user_fullname'];
                                                 <?php echo $data["NoPesanan"]; ?>
                                             </td>
                                             <td style="border: 1px solid black;">
-                                                <?php echo $data["TPembayaran"]; ?>
+                                                <?php echo $data["KProduk"]; ?>
                                             </td>
                                             <td style="border: 1px solid black;">
-                                                <?php echo $data["TglPemesanan"]; ?>
+                                                <?php echo $data["harga"]; ?>
                                             </td>
                                             <td style="border: 1px solid black;">
-                                                <?php echo $data["TItem"]; ?>
+                                                <?php echo $data["jumlah"]; ?>
                                             </td>
                                             <td style="border: 1px solid black;">
-                                                <?php echo $data["Bawal"]; ?>
+                                                <?php echo $data["tanggal_ambil"]; ?>
                                             </td>
                                             <td style="border: 1px solid black;">
-                                                <?php echo $data["Kurang"]; ?>
-                                            </td>
-                                            <td style="border: 1px solid black;">
-                                                <?php echo $data["Kembali"]; ?>
-                                            </td>
-                                            <td style="border: 1px solid black;">
-                                                <?php echo $data["Status"]; ?>
-                                            </td>
-                                            <td style="border: 1px solid black;">
-                                                <?php echo $data["Diskon"]; ?>
-                                            </td>
-                                            <td style="border: 1px solid black;">
-                                                <?php echo $data["IdKonsumen"]; ?>
+                                                <?php echo $data["keterangan"]; ?>
                                             </td>
                                         </tr>
                                         <?php
