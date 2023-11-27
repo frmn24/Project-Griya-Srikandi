@@ -147,7 +147,7 @@ $user_fullname = $_SESSION['user_fullname'];
                                         $data = mysqli_fetch_array($hasil);
                                         $total_pesanan = $data['total_pesanan'];
                                         ?>
-                                        <p class="card-text">Total Pesanan Masuk:</p>
+                                        <p class="card-text">Total Pesanan Dalam Proses:</p>
                                         <p class="card-text text-center mb-3 display-6">
                                             <?php echo $total_pesanan; ?><br>Pesanan
                                         </p>
@@ -172,7 +172,7 @@ $user_fullname = $_SESSION['user_fullname'];
                                         $data = mysqli_fetch_array($hasil);
                                         $total_pesanan = $data['total_pesanan'];
                                         ?>
-                                        <p class="card-text">Total Pesanan Masuk:</p>
+                                        <p class="card-text">Total Pesanan Selesai:</p>
                                         <p class="card-text text-center mb-3 display-6">
                                             <?php echo $total_pesanan; ?><br>Pesanan
                                         </p>
