@@ -24,6 +24,13 @@ $user_fullname = $_SESSION['user_fullname'];
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <!-- jQuery UI -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 </head>
 
 <body class="sb-nav-fixed">
@@ -210,13 +217,14 @@ $user_fullname = $_SESSION['user_fullname'];
                             <table border='1' id="datatablesSimple">
                                 <thead>
                                     <tr>
+                                        <th style="border: 1px solid black;">Nomor</th>
                                         <th style="border: 1px solid black;">Nomor Pemesanan</th>
                                         <th style="border: 1px solid black;">Kode Produk</th>
                                         <th style="border: 1px solid black;">Harga Produk</th>
                                         <th style="border: 1px solid black;">Total Item</th>
                                         <th style="border: 1px solid black;">Tanggal Ambil</th>
                                         <th style="border: 1px solid black;">Keterangan</th>
-                                        <!-- <th style="border: 1px solid black;" colspan='2'>Aksi</th> -->
+                                        <th style="border: 1px solid black;" colspan='2'>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -228,6 +236,9 @@ $user_fullname = $_SESSION['user_fullname'];
                                     while ($data = mysqli_fetch_array($hasil)):
                                         ?>
                                         <tr>
+                                            <td style="border: 2px solid black;">
+                                                <?php echo $no++ ?>
+                                            </td>
                                             <td style="border: 1px solid black;">
                                                 <?php echo $data["NoPesanan"]; ?>
                                             </td>
@@ -246,7 +257,77 @@ $user_fullname = $_SESSION['user_fullname'];
                                             <td style="border: 1px solid black;">
                                                 <?php echo $data["keterangan"]; ?>
                                             </td>
+                                            <td>
+                                                <a href="#" class="btn btn-warning" role="button" class="btn btn-primary"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#modalUbahPesanan<?php echo $no; ?>">Update</a>
+                                            </td>
                                         </tr>
+                                        <!-- Awal Modal Update -->
+                                        <div class="modal fade" id="modalUbahPesanan<?php echo $no; ?>"
+                                            data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                                            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="staticBackdropLabel">Ubah Produk
+                                                        </h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <form method="POST" action="update.php" enctype="multipart/form-data">
+                                                        <div class="modal-body">
+                                                            <div class="mb-3">
+                                                                <label for="kodeproduk" class="form-label">Nomor
+                                                                    Pemesanan</label>
+                                                                <input type="text" name="kodeproduk"
+                                                                    value="<?php echo $data["NoPesanan"]; ?>"
+                                                                    class="form-control" readonly>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="kodeProduk" class="form-label">Kode
+                                                                    Produk</label>
+                                                                <input type="text" name="kodeProduk"
+                                                                    value="<?php echo $data["KProduk"]; ?>"
+                                                                    class="form-control" readonly>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="hargaproduk" class="form-label">Harga
+                                                                    Produk</label>
+                                                                <input type="number" name="hargaproduk"
+                                                                    value="<?php echo $data["harga"]; ?>"
+                                                                    class="form-control" readonly>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="titem" class="form-label">Total Item</label>
+                                                                <input type="number" name="titem"
+                                                                    value="<?php echo $data["jumlah"]; ?>"
+                                                                    class="form-control" readonly>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="tanggal_ambil" class="form-label">Tanggal
+                                                                    Ambil</label>
+                                                                <input type="text" id="tanggal_ambil" name="tanggal_ambil"
+                                                                    value="<?php echo $data["tanggal_ambil"]; ?>"
+                                                                    class="form-control datepicker">
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="keterangan"
+                                                                    class="form-label">Keterangan</label>
+                                                                <input type="text" name="keterangan"
+                                                                    value="<?php echo $data["keterangan"]; ?>"
+                                                                    class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="submit" name="ubah"
+                                                                class="btn btn-primary">Ubah</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Akhir Modal Update -->
                                         <?php
                                     endwhile;
                                     ?>
@@ -267,6 +348,15 @@ $user_fullname = $_SESSION['user_fullname'];
 
             }
         }
+    </script>
+    <script>
+        $(document).ready(function () {
+            $(".datepicker").datepicker({
+                dateFormat: 'yy-mm-dd', // Sesuaikan dengan format tanggal yang Anda inginkan
+                changeMonth: true,
+                changeYear: true
+            });
+        });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
