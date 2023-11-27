@@ -202,7 +202,6 @@ $user_fullname = $_SESSION['user_fullname'];
                                         <option value="datatablesSimple">Pesanan Masuk</option>
                                         <option value="datatablesSimple">Dalam Proses</option>
                                         <option value="datatablesSimple">Selesai</option>
-                                        <!-- Tambahkan opsi lain jika diperlukan -->
                                     </select>
                                 </div>
                             </div>
