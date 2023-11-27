@@ -25,6 +25,9 @@ $user_fullname = $_SESSION['user_fullname'];
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script src="path/to/Chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
 </head>
 
@@ -126,7 +129,7 @@ $user_fullname = $_SESSION['user_fullname'];
                                         ?>
                                         <p class="card-text">Total Pemasukan:</p>
                                         <p class="card-text text-center mb-3 display-6">
-                                            <?php echo $data['total_pemasukan']; ?><br>Rupiah
+                                            <?php echo number_format ($data['total_pemasukan']); ?><br>Rupiah
                                         </p>
                                     </div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
@@ -164,9 +167,71 @@ $user_fullname = $_SESSION['user_fullname'];
                             <div class="card mb-4">
                                 <div class="card-header">
                                     <i class="fas fa-chart-area me-1"></i>
-                                    Pemasukan
+                                    Line Chart Pemasukan
                                 </div>
-                                <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
+                                <?php
+                                include "koneksi.php";
+
+                                // Query untuk mengambil nilai bulan dari kolom TglPemesanan
+                                $result = mysqli_query($koneksi, "SELECT MONTH(TglPemesanan) AS bulan, SUM(TPembayaran) AS total FROM pemesanan GROUP BY bulan;");
+
+                                // Mengambil hasil query ke dalam array asosiatif
+                                $data = [];
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    $data[$row['bulan']] = $row['total'];
+                                }
+
+                                // Tambahkan data default untuk setiap bulan
+                                for ($i = 1; $i <= 12; $i++) {
+                                    $bulan = date('F', mktime(0, 0, 0, $i, 1));
+                                    if (!isset($data[$i])) {
+                                        $data[$i] = 0;
+                                    }
+                                }
+
+                                // Sortir data berdasarkan bulan
+                                ksort($data);
+
+                                // Update array bulan dan total
+                                $bulanArray = array_map(function ($bulan) {
+                                    return date('F', mktime(0, 0, 0, $bulan, 1));
+                                }, array_keys($data));
+
+                                $totalArray = array_values($data);
+
+                                // Inisialisasi array untuk menyimpan data bulan dan total
+                                $bulanArray = array_map(function ($bulan) {
+                                    return date('F', mktime(0, 0, 0, $bulan, 1));
+                                }, array_keys($data));
+
+                                // Memisahkan data bulan dan total menjadi dua array terpisah
+                                $totalArray = array_values($data);
+                                ?>
+                                <canvas id="areachart" style="width:100%;max-width:600px"></canvas>
+                                <script>
+                                    var xValues = <?php echo json_encode($bulanArray); ?>;
+                                    var yValues = <?php echo json_encode($totalArray); ?>;
+
+                                    new Chart("areachart", {
+                                        type: "line",
+                                        data: {
+                                            labels: xValues,
+                                            datasets: [{
+                                                fill: false,
+                                                lineTension: 0,
+                                                backgroundColor: "rgba(0,0,255,1.0)",
+                                                borderColor: "rgba(0,0,255,0.1)",
+                                                data: yValues
+                                            }]
+                                        },
+                                        options: {
+                                            legend: { display: false },
+                                            scales: {
+                                                yAxes: [{ ticks: { min: 6, max: 16 } }],
+                                            }
+                                        }
+                                    });
+                                </script>
                             </div>
                         </div>
                         <div class="col-xl-6">
