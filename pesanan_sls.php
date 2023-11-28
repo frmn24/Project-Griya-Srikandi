@@ -30,6 +30,7 @@ $user_fullname = $_SESSION['user_fullname'];
     <!-- jQuery UI -->
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="css/styles.css"></script>
 
 </head>
 
@@ -204,10 +205,10 @@ $user_fullname = $_SESSION['user_fullname'];
                                     Tabel Pesanan
                                 </div>
                                 <div class="row1" style="margin-left: 160px;">
-                                    <a href="pesanan.php" class="btn btn-primary">All Pesanan</a>
-                                    <a href="pesanan_msk.php" class="btn btn-primary">Pesanan Masuk</a>
-                                    <a href="pesanan_dp.php" class="btn btn-primary">Dalam Proses</a>
-                                    <a href="pesanan_sls.php" class="btn btn-primary">Pesanan Selesai</a>
+                                <a href="pesanan.php" class="btn btn-primary" >All Pesanan</a>
+                                <a href="pesanan_msk.php" class="btn btn-primary" >Pesanan Masuk</a>
+                                <a href="pesanan_dp.php" class="btn btn-primary" >Dalam Proses</a>
+                                <a href="pesanan_sls.php" class="btn btn-primary" >Pesanan Selesai</a>
                                 </div>
                             </div>
                         </div>
@@ -228,7 +229,7 @@ $user_fullname = $_SESSION['user_fullname'];
                                 <tbody>
                                     <?php
                                     include "koneksi.php";
-                                    $sql = "SELECT * FROM detail_pesanan";
+                                    $sql = "SELECT * FROM detail_pesanan WHERE keterangan = 'Selesai'";
                                     $hasil = mysqli_query($koneksi, $sql);
                                     $no = 1;
                                     while ($data = mysqli_fetch_array($hasil)):

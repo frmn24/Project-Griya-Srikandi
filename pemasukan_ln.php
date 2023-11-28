@@ -195,7 +195,7 @@ $user_fullname = $_SESSION['user_fullname'];
                                     <tbody>
                                         <?php
                                         include "koneksi.php";
-                                        $sql = "select * from pemesanan";
+                                        $sql = "select * from pemesanan WHERE status = 'Lunas'";
                                         $hasil = mysqli_query($koneksi, $sql);
                                         $no = 1;
                                         while ($data = mysqli_fetch_array($hasil)):
