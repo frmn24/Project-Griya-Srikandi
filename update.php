@@ -1,9 +1,9 @@
 <?php
 // Lakukan koneksi ke database
-$servername = "griya-srikandi.tifa.myhost.id";
-$username = "tifamyho_srikandi";
-$password = "@JTIpolije2023";
-$dbname = "tifamyho_srikandi";
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "griya4";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
