@@ -1,6 +1,6 @@
 <?php
 session_start();
-$koneksi = mysqli_connect("localhost", "root", "", "griya4");
+$koneksi = mysqli_connect("griya-srikandi.tifa.myhost.id", "tifamyho_srikandi", "JTIpolije2023", "tifamyho_srikandi");
 if (isset($_POST['login'])) {
     $email = $_POST['email'];
     $pass = $_POST['password'];

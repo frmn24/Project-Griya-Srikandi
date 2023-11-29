@@ -1,6 +1,6 @@
 <?php
 // Koneksi ke database (sesuaikan dengan koneksi Anda)
-$koneksi = mysqli_connect("localhost", "root", "", "griya");
+$koneksi = mysqli_connect("griya-srikandi.tifa.myhost.id", "tifamyho_srikandi", "JTIpolije2023", "tifamyho_srikandi");
 
 if (!$koneksi) {
     die("Koneksi ke database gagal: " . mysqli_connect_error());
