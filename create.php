@@ -100,9 +100,9 @@ if (isset($_POST['hapus'])) {
             </script>";
     } else {
         echo "<script>
-            alert('Hapus Data Gagal');
-            window.location.href = 'databarang.php';
-            </script>";
+    alert('Hapus Data Gagal: " . $stmt->error . "');
+    window.location.href = 'databarang.php';
+    </script>";
     }
 }
 

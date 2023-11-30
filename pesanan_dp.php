@@ -79,7 +79,7 @@ $user_fullname = $_SESSION['user_fullname'];
                         <a class="nav-link" href="pemasukan.php">
                             Pemasukan
                         </a>
-                        <a class="nav-link" href="pesanan.php">
+                        <a class="nav-link active" href="pesanan.php">
                             Pesanan
                         </a>
                         <div class="sb-sidenav-menu-heading"></div>

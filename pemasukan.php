@@ -70,7 +70,7 @@ $user_fullname = $_SESSION['user_fullname'];
                             <a class="nav-link" href="databarang.php">
                                 Data Barang
                             </a>
-                            <a class="nav-link" href="pemasukan.php">
+                            <a class="nav-link active" href="pemasukan.php">
                                 Pemasukan
                             </a>
                             <a class="nav-link" href="pesanan.php">

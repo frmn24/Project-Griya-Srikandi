@@ -64,7 +64,7 @@ $user_fullname = $_SESSION['user_fullname'];
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
-                        <a class="nav-link" href="databarang.php">
+                        <a class="nav-link active" href="databarang.php">
                             Data Barang
                         </a>
                         <a class="nav-link" href="pemasukan.php">
