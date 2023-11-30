@@ -169,9 +169,9 @@ $user_fullname = $_SESSION['user_fullname'];
                                         Tabel Pemasukan
                                     </div>
                                     <div class="row1" style="margin-left: 160px;">
-                                        <a href="pemasukan.php" class="btn btn-primary" >All Pemasukan</a>
-                                        <a href="pemasukan_bl.php" class="btn btn-primary" >Belum Lunas</a>
-                                        <a href="pemasukan_ln.php" class="btn btn-primary" >Lunas</a>
+                                        <a href="pemasukan.php" class="btn btn-primary">All Pemasukan</a>
+                                        <a href="pemasukan_bl.php" class="btn btn-primary">Belum Lunas</a>
+                                        <a href="pemasukan_ln.php" class="btn btn-primary">Lunas</a>
                                     </div>
                                 </div>
                             </div>
@@ -179,6 +179,7 @@ $user_fullname = $_SESSION['user_fullname'];
                                 <table border='1' id="datatablesSimple">
                                     <thead>
                                         <tr>
+                                            <th style="border: 1px solid black;">Nomor</th>
                                             <th style="border: 1px solid black;">Nomor Pemesanan</th>
                                             <th style="border: 1px solid black;">Total Pembayaran</th>
                                             <th style="border: 1px solid black;">Tanggal Pemesanan</th>
@@ -201,6 +202,9 @@ $user_fullname = $_SESSION['user_fullname'];
                                         while ($data = mysqli_fetch_array($hasil)):
                                             ?>
                                             <tr>
+                                                <td style="border: 2px solid black;">
+                                                    <?php echo $no++ ?>
+                                                </td>
                                                 <td style="border: 1px solid black;">
                                                     <?php echo $data["NoPesanan"]; ?>
                                                 </td>
@@ -231,7 +235,64 @@ $user_fullname = $_SESSION['user_fullname'];
                                                 <td style="border: 1px solid black;">
                                                     <?php echo $data["IdKonsumen"]; ?>
                                                 </td>
+                                                <!-- <td>
+                                                    <a href="#" class="btn btn-warning" role="button"
+                                                        class="btn btn-primary" data-bs-toggle="modal"
+                                                        data-bs-target="#modalUbahPemasukan<?php echo $no; ?>">Update</a>
+                                                </td> -->
                                             </tr>
+                                            <!-- Awal Modal Update -->
+                                            <div class="modal fade" id="modalUbahPemasukan<?php echo $no; ?>"
+                                                data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                                                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="staticBackdropLabel">Ubah Keterangan
+                                                            </h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                aria-label="Close"></button>
+                                                        </div>
+                                                        <form method="POST" action="update_pemasukan.php"
+                                                            enctype="multipart/form-data">
+                                                            <div class="modal-body">
+                                                                <div class="mb-3">
+                                                                    <label for="nopesan" class="form-label">Nomor
+                                                                        Pemesanan</label>
+                                                                    <input type="text" name="nopesan" value="<?php echo $data["NoPesanan"]; ?>"
+                                                                        class="form-control" readonly>
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="total" class="form-label">Total
+                                                                        Pembayaran</label>
+                                                                    <input type="text" name="total" value="<?php echo $data["TPembayaran"]; ?>"
+                                                                        class="form-control" readonly>
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="bawal" class="form-label">Bayar Awal</label>
+                                                                    <input type="text" name="bawal" value="<?php echo $data["Bawal"]; ?>"
+                                                                        class="form-control" readonly>
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="kurang" class="form-label">Kurang</label>
+                                                                    <input type="text" name="kurang" value="<?php echo $data["Kurang"]; ?>"
+                                                                        class="form-control" readonly>
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="status" class="form-label">Status</label>
+                                                                    <input type="text" name="status" value="<?php echo $data["Status"]; ?>"
+                                                                        class="form-control" readonly>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="submit" name="ubah"
+                                                                    class="btn btn-primary">Ubah</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Akhir Modal Update -->
                                             <?php
                                         endwhile;
                                         ?>

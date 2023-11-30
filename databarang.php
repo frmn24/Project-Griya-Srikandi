@@ -150,9 +150,6 @@ $user_fullname = $_SESSION['user_fullname'];
                                                 }
                                                 ?>
                                             </td>
-
-
-
                                             <td>
                                                 <a href="#" class="btn btn-warning" role="button" class="btn btn-primary"
                                                     data-bs-toggle="modal"
