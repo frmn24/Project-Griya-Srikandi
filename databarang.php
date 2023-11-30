@@ -108,7 +108,8 @@ $user_fullname = $_SESSION['user_fullname'];
                                         <th style="border: 1px solid black;">Nama Produk</th>
                                         <th style="border: 1px solid black;">Harga Jual</th>
                                         <th style="border: 1px solid black;">Harga Produksi</th>
-                                        <th style="border: 1px solid black;">Path Gambar</th>
+                                        <th style="border: 1px solid black;">Kategori</th>
+                                        <th style="border: 1px solid black;">Gambar</th>
                                         <th style="border: 1px solid black;" colspan='2'>Aksi</th>
                                     </tr>
                                 </thead>
@@ -136,16 +137,20 @@ $user_fullname = $_SESSION['user_fullname'];
                                             <td style="border: 1px solid black;">
                                                 <?php echo $data["Hproduksi"]; ?>
                                             </td>
+                                            <td style="border: 1px solid black;">
+                                                <?php echo $data["kd_kategori"]; ?>
+                                            </td>
                                             <td>
                                                 <?php
                                                 if (!empty($data["gambarproduk"])) {
-                                                    $gambar_path = 'gambar/' . $data["gambarproduk"]; // Sesuaikan dengan direktori tempat gambar disimpan
+                                                    $gambar_path = 'gambar/' . $data["gambarproduk"]; 
                                                     echo "<img src='$gambar_path' alt='Gambar Produk' style='max-width: 100px; max-height: 100px;'>";
                                                 } else {
                                                     echo "Tidak Ada Gambar";
                                                 }
                                                 ?>
                                             </td>
+
 
 
                                             <td>
@@ -168,7 +173,7 @@ $user_fullname = $_SESSION['user_fullname'];
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                             aria-label="Close"></button>
                                                     </div>
-                                                    <form method="POST" action="create.php" enctype="multipart/form-data">
+                                                    <form method="POST" action="update_img.php" enctype="multipart/form-data">
                                                         <div class="modal-body">
 
                                                             <div class="mb-3">
@@ -199,8 +204,15 @@ $user_fullname = $_SESSION['user_fullname'];
                                                                     class="form-control">
                                                             </div>
                                                             <div class="mb-3">
+                                                                <label for="kategori" class="form-label">Kategori</label>
+                                                                <input type="number" name="kategori"
+                                                                    value="<?php echo $data["kd_kategori"]; ?>"
+                                                                    class="form-control">
+                                                            </div>
+                                                            <div class="mb-3">
                                                                 <label for="gambar" class="form-label">Gambar Produk</label>
-                                                                <input type="file" name="gambar" accept="image/*" class="form-control">
+                                                                <input type="file" name="gambar" accept="image/*"
+                                                                    class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">
@@ -268,11 +280,6 @@ $user_fullname = $_SESSION['user_fullname'];
                                         </div>
                                         <form method="POST" enctype="multipart/form-data" action="create.php">
                                             <div class="modal-body">
-                                                <!-- <div class="mb-3">
-                                                    <label for="kodeproduk" class="form-label">Kode Produk</label>
-                                                    <input type="text" name="kodeproduk" id="kodeproduk"
-                                                        class="form-control">
-                                                </div> -->
                                                 <div class="mb-3">
                                                     <label for="namaproduk" class="form-label">Nama Produk</label>
                                                     <input type="text" name="namaproduk" class="form-control">
@@ -284,6 +291,10 @@ $user_fullname = $_SESSION['user_fullname'];
                                                 <div class="mb-3">
                                                     <label for="hargapro" class="form-label">Harga Produksi</label>
                                                     <input type="number" name="hargapro" class="form-control">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="kategori" class="form-label">Kategori</label>
+                                                    <input type="number" name="kategori" class="form-control">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="gambar" class="form-label">Gambar Produk</label>
