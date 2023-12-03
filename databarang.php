@@ -128,6 +128,7 @@ $user_fullname = $_SESSION['user_fullname'];
                                             <td style="border: 1px solid black;">
                                                 <?php echo $data["KProduk"]; ?>
                                             </td>
+                                            
                                             <td style="border: 1px solid black;">
                                                 <?php echo $data["NProduk"]; ?>
                                             </td>
