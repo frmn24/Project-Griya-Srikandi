@@ -281,7 +281,7 @@ $user_fullname = $_SESSION['user_fullname'];
                                                                 <div class="mb-3">
                                                                     <label for="status" class="form-label">Status</label>
                                                                     <input type="text" name="status" value="<?php echo $data["Status"]; ?>"
-                                                                        class="form-control" readonly>
+                                                                        class="form-control" >
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">

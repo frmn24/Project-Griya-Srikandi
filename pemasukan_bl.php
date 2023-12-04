@@ -190,7 +190,7 @@ $user_fullname = $_SESSION['user_fullname'];
                                             <th style="border: 1px solid black;">Status</th>
                                             <th style="border: 1px solid black;">Diskon</th>
                                             <th style="border: 1px solid black;">Konsumen</th>
-                                            <!-- <th style="border: 1px solid black;" colspan='2'>Aksi</th> -->
+                                            <th style="border: 1px solid black;" colspan='2'>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -235,11 +235,11 @@ $user_fullname = $_SESSION['user_fullname'];
                                                 <td style="border: 1px solid black;">
                                                     <?php echo $data["IdKonsumen"]; ?>
                                                 </td>
-                                                <!-- <td>
+                                                <td>
                                                     <a href="#" class="btn btn-warning" role="button"
                                                         class="btn btn-primary" data-bs-toggle="modal"
                                                         data-bs-target="#modalUbahPemasukan<?php echo $no; ?>">Update</a>
-                                                </td> -->
+                                                </td>
                                             </tr>
                                             <!-- Awal Modal Update -->
                                             <div class="modal fade" id="modalUbahPemasukan<?php echo $no; ?>"
@@ -259,29 +259,29 @@ $user_fullname = $_SESSION['user_fullname'];
                                                                 <div class="mb-3">
                                                                     <label for="nopesan" class="form-label">Nomor
                                                                         Pemesanan</label>
-                                                                    <input type="text" name="nopesan" value=""
+                                                                    <input type="text" name="nopesan" value="<?php echo $data["NoPesanan"]; ?>"
                                                                         class="form-control" readonly>
                                                                 </div>
                                                                 <div class="mb-3">
                                                                     <label for="total" class="form-label">Total
                                                                         Pembayaran</label>
-                                                                    <input type="text" name="total" value=""
+                                                                    <input type="text" name="total" value="<?php echo $data["TPembayaran"]; ?>"
                                                                         class="form-control" readonly>
                                                                 </div>
                                                                 <div class="mb-3">
                                                                     <label for="bawal" class="form-label">Bayar Awal</label>
-                                                                    <input type="text" name="bawal" value=""
+                                                                    <input type="text" name="bawal" value="<?php echo $data["Bawal"]; ?>"
                                                                         class="form-control" readonly>
                                                                 </div>
                                                                 <div class="mb-3">
                                                                     <label for="kurang" class="form-label">Kurang</label>
-                                                                    <input type="text" name="kurang" value=""
+                                                                    <input type="text" name="kurang" value="<?php echo $data["Kurang"]; ?>"
                                                                         class="form-control" readonly>
                                                                 </div>
                                                                 <div class="mb-3">
                                                                     <label for="status" class="form-label">Status</label>
-                                                                    <input type="text" name="status" value=""
-                                                                        class="form-control" readonly>
+                                                                    <input type="text" name="status" value="<?php echo $data["Status"]; ?>"
+                                                                        class="form-control" >
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">

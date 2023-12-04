@@ -15,22 +15,21 @@ if ($conn->connect_error) {
 // Periksa apakah form telah dikirim dengan metode POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Tangkap data dari formulir
-    $kodeproduk = $_POST["kodeproduk"];
-    $tanggal_ambil = $_POST["tanggal_ambil"];
-    $keterangan = $_POST["keterangan"];
+    $nopesanan = $_POST["nopesan"];
+    $status = $_POST["status"];
 
     // Lakukan query update
-    $sql = "UPDATE detail_pesanan SET tanggal_ambil = '$tanggal_ambil', keterangan = '$keterangan' WHERE NoPesanan = '$kodeproduk'";
+    $sql = "UPDATE pemesanan SET Status = '$status' WHERE NoPesanan = '$nopesanan'";
 
     if ($conn->query($sql) === TRUE) {
         echo "<script>
                 alert('Data berhasil diupdate.');
-                window.location.href='pemasukan.php'; // Gantilah dengan halaman yang sesuai
+                window.location.href='pemasukan_bl.php'; // Gantilah dengan halaman yang sesuai
              </script>";
     } else {
         echo "<script>
                 alert('Error: " . $sql . "\\n" . $conn->error . "');
-                window.location.href='pemasukan.php'; // Gantilah dengan halaman yang sesuai
+                window.location.href='pemasukan_bl.php'; // Gantilah dengan halaman yang sesuai
              </script>";
     }
 }
