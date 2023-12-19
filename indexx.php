@@ -163,7 +163,7 @@
             <div class="row gy-5">
 
               <div class="col-lg-4 menu-item">
-                <a href="assets/img/menu/tas2.jpg" class="glightbox"><img src="assets/img/menu/tas2.jpg" class="menu-img img-fluid" style="border-radius: 45%;" alt=""></a>
+                <a href="assets/img/menu/tas1.jpg" class="glightbox"><img src="assets/img/menu/tas1.jpg" class="menu-img img-fluid" style="border-radius: 45%;" alt=""></a>
                 <h4>Tas Ransel Kanvas</h4>
                 <p class="price">
                   Rp500.000,00
@@ -179,7 +179,7 @@
               </div><!-- Menu Item -->
 
               <div class="col-lg-4 menu-item">
-                <a href="assets/img/menu/tas2.jpg" class="glightbox"><img src="assets/img/menu/tas2.jpg" class="menu-img img-fluid" style="border-radius: 45%;" alt=""></a>
+                <a href="assets/img/menu/no edit/download (8).jpg" class="glightbox"><img src="assets/img/menu/no edit/download (8).jpg" class="menu-img img-fluid" style="border-radius: 45%;" alt=""></a>
                 <h4>Tas Laptop Kanvas 14'</h4>
                 <p class="price">
                   Rp110.000,00
@@ -187,7 +187,7 @@
               </div><!-- Menu Item -->
 
               <div class="col-lg-4 menu-item">
-                <a href="assets/img/menu/tas2.jpg" class="glightbox"><img src="assets/img/menu/tas2.jpg" class="menu-img img-fluid" style="border-radius: 45%;" alt=""></a>
+                <a href="assets/img/menu/no edit/laptop casing.jpg" class="glightbox"><img src="assets/img/menu/no edit/laptop casing.jpg" class="menu-img img-fluid" style="border-radius: 45%;" alt=""></a>
                 <h4>Tas Laptop Denim 13'</h4>
                 <p class="price">
                   Rp90.000,00
@@ -195,7 +195,7 @@
               </div><!-- Menu Item -->
 
               <div class="col-lg-4 menu-item">
-                <a href="assets/img/menu/tas2.jpg" class="glightbox"><img src="assets/img/menu/tas2.jpg" class="menu-img img-fluid" style="border-radius: 45%;" alt=""></a>
+                <a href="assets/img/menu/no edit/download (4).jpg" class="glightbox"><img src="assets/img/menu/no edit/download (4).jpg" class="menu-img img-fluid" style="border-radius: 45%;" alt=""></a>
                 <h4>Travel Bag Denim</h4>
                 <p class="price">
                   Rp100.000,00
@@ -203,7 +203,7 @@
               </div><!-- Menu Item -->
 
               <div class="col-lg-4 menu-item">
-                <a href="assets/img/menu/tas2.jpg" class="glightbox"><img src="assets/img/menu/tas2.jpg" class="menu-img img-fluid" style="border-radius: 45%;" alt=""></a>
+                <a href="assets/img/menu/tas4.jpg" class="glightbox"><img src="assets/img/menu/tas4.jpg" class="menu-img img-fluid" style="border-radius: 45%;" alt=""></a>
                 <h4>Travel Bag Kecil</h4>
                 <p class="price">
                   Rp50.000,00
@@ -218,7 +218,7 @@
             <div class="row gy-5">
 
               <div class="col-lg-4 menu-item">
-                <a href="assets/img/menu/dompet1.jpg" class="glightbox"><img src="assets/img/menu/dompet1.jpg" class="menu-img img-fluid" style="border-radius: 45%;" alt=""></a>
+                <a href="assets/img/menu/no edit/download (5).jpg" class="glightbox"><img src="assets/img/menu/no edit/download (5).jpg" class="menu-img img-fluid" style="border-radius: 45%;" alt=""></a>
                 <h4>Dompet Besar Kanvas</h4>
                 <p class="price">
                   Rp30.000,00
@@ -229,31 +229,31 @@
                 <a href="assets/img/menu/dompet1.jpg" class="glightbox"><img src="assets/img/menu/dompet1.jpg" class="menu-img img-fluid" style="border-radius: 45%;" alt=""></a>
                 <h4>Dompet Kecil Kanvas</h4>
                 <p class="price">
-                  Rp20.000,00
+                  Rp30.000,00
                 </p>
               </div><!-- Menu Item -->
 
               <div class="col-lg-4 menu-item">
-                <a href="assets/img/menu/dompet1.jpg" class="glightbox"><img src="assets/img/menu/dompet1.jpg" class="menu-img img-fluid" style="border-radius: 45%;" alt=""></a>
-                <h4>Dompet Kecil Kanvas</h4>
+                <a href="assets/img/menu/no edit/download (7).jpg" class="glightbox"><img src="assets/img/menu/no edit/download (7).jpg" class="menu-img img-fluid" style="border-radius: 45%;" alt=""></a>
+                <h4>Dompet Blacu Kanvas</h4>
                 <p class="price">
-                  Rp20.000,00
+                  Rp50.000,00
                 </p>
               </div><!-- Menu Item -->
 
               <div class="col-lg-4 menu-item">
-                <a href="assets/img/menu/dompet1.jpg" class="glightbox"><img src="assets/img/menu/dompet1.jpg" class="menu-img img-fluid" style="border-radius: 45%;" alt=""></a>
-                <h4>Dompet Kecil Kanvas</h4>
+                <a href="assets/img/menu//no edit/download (6).jpg" class="glightbox"><img src="assets/img/menu//no edit/download (6).jpg" class="menu-img img-fluid" style="border-radius: 45%;" alt=""></a>
+                <h4>Pouch Bag Cream</h4>
                 <p class="price">
-                  Rp20.000,00
+                  Rp40.000,00
                 </p>
               </div><!-- Menu Item -->
 
               <div class="col-lg-4 menu-item">
-                <a href="assets/img/menu/dompet1.jpg" class="glightbox"><img src="assets/img/menu/dompet1.jpg" class="menu-img img-fluid" style="border-radius: 45%;" alt=""></a>
-                <h4>Dompet Kecil Kanvas</h4>
+                <a href="assets/img/menu/no edit/download (5).jpg" class="glightbox"><img src="assets/img/menu/no edit/download (5).jpg" class="menu-img img-fluid" style="border-radius: 45%;" alt=""></a>
+                <h4>Dompet Besar Kanvas</h4>
                 <p class="price">
-                  Rp20.000,00
+                  Rp30.000,00
                 </p>
               </div><!-- Menu Item -->
 
@@ -281,7 +281,7 @@
               </div><!-- Menu Item -->
 
               <div class="col-lg-4 menu-item">
-                <a href="assets/img/menu/totebag1.jpg" class="glightbox"><img src="assets/img/menu/totebag1.jpg" class="menu-img img-fluid" style="border-radius: 45%;" alt=""></a>
+                <a href="assets/img/menu/no edit/totebag1.jpg" class="glightbox"><img src="assets/img/menu/no edit/totebag1.jpg" class="menu-img img-fluid" style="border-radius: 45%;" alt=""></a>
                 <h4>Choco Mix Totebag</h4>
                 <p class="price">
                   Rp200.000,00
@@ -289,7 +289,7 @@
               </div><!-- Menu Item -->
 
               <div class="col-lg-4 menu-item">
-                <a href="assets/img/menu/totebag1.jpg" class="glightbox"><img src="assets/img/menu/totebag1.jpg" class="menu-img img-fluid" style="border-radius: 45%;" alt=""></a>
+                <a href="assets/img/menuno edit/totebag2.jpg" class="glightbox"><img src="assets/img/menu/no edit/totebag2.jpg" class="menu-img img-fluid" style="border-radius: 45%;" alt=""></a>
                 <h4>Choco Mix Totebag</h4>
                 <p class="price">
                   Rp200.000,00
@@ -297,7 +297,7 @@
               </div><!-- Menu Item -->
 
               <div class="col-lg-4 menu-item">
-                <a href="assets/img/menu/totebag1.jpg" class="glightbox"><img src="assets/img/menu/totebag1.jpg" class="menu-img img-fluid" style="border-radius: 45%;" alt=""></a>
+                <a href="assets/img/menu/no edit/totebag3.jpg" class="glightbox"><img src="assets/img/menu/no edit/totebag3.jpg" class="menu-img img-fluid" style="border-radius: 45%;" alt=""></a>
                 <h4>Choco Mix Totebag</h4>
                 <p class="price">
                   Rp200.000,00
@@ -305,7 +305,7 @@
               </div><!-- Menu Item -->
 
               <div class="col-lg-4 menu-item">
-                <a href="assets/img/menu/totebag1.jpg" class="glightbox"><img src="assets/img/menu/totebag1.jpg" class="menu-img img-fluid" style="border-radius: 45%;" alt=""></a>
+                <a href="assets/img/menu/tas6.jpg" class="glightbox"><img src="assets/img/menu/tas6.jpg" class="menu-img img-fluid" style="border-radius: 45%;" alt=""></a>
                 <h4>Choco Mix Totebag</h4>
                 <p class="price">
                   Rp200.000,00
@@ -313,8 +313,8 @@
               </div><!-- Menu Item -->
 
               <div class="col-lg-4 menu-item">
-                <a href="assets/img/menu/totebag1.jpg" class="glightbox"><img src="assets/img/menu/totebag1.jpg" class="menu-img img-fluid" style="border-radius: 45%;" alt=""></a>
-                <h4>Choco Mix Totebag</h4>
+                <a href="assets/img/menu/totebag4.jpg" class="glightbox"><img src="assets/img/menu/totebag4.jpg" class="menu-img img-fluid" style="border-radius: 45%;" alt=""></a>
+                <h4>Black Kanvas Totebag</h4>
                 <p class="price">
                   Rp200.000,00
                 </p>
@@ -414,10 +414,6 @@
         <div class="section-header">
           <p>Butuh bantuan? <span>Hubungi kami</span></p>
         </div>
-
-        <!-- <div class="mb-3">
-          <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" allowfullscreen></iframe>
-        </div>End Google Maps -->
 
         <div class="row gy-4">
 
