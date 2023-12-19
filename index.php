@@ -3,7 +3,7 @@ session_start();
 
 // Periksa apakah pengguna sudah login
 if (!isset($_SESSION['user_email'])) {
-    header('Location: index.html'); // Redirect pengguna ke halaman login jika mereka belum login
+    header('Location: indexx.php'); // Redirect pengguna ke halaman login jika mereka belum login
     exit;
 }
 
